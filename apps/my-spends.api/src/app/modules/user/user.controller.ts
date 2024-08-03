@@ -1,14 +1,28 @@
 import { Body, Controller, HttpCode, HttpStatus, Inject, Post } from '@nestjs/common';
 import { IUserService, USER_SERVICE } from './interfaces';
-import { CreateUserDTO } from './dtos';
+import { CreateUserDTO, GetUserDTO } from './dtos';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@Controller('user')
+@ApiTags('Users')
+@Controller('users')
 export class UserController {
   constructor(@Inject(USER_SERVICE) private readonly userService: IUserService) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() payload: CreateUserDTO) {
+  @ApiOperation({ summary: 'Create a new user' })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    type: GetUserDTO,
+    example: {
+      id: '1',
+      name: 'John Doe',
+      email: 'email@email.com',
+      createdAt: '2021-09-01T00:00:00.000Z',
+      updatedAt: '2021-09-01T00:00:00.000Z',
+    }
+  })
+  async create(@Body() payload: CreateUserDTO): Promise<GetUserDTO> {
     return this.userService.create(payload);
   }
 }
