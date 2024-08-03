@@ -1,0 +1,28 @@
+{
+  "name": "my-spends.api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/my-spends.api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "buildTarget": "my-spends.api:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-spends.api:build:development"
+        },
+        "production": {
+          "buildTarget": "my-spends.api:build:production"
+        }
+      }
+    }
+  }
+}
