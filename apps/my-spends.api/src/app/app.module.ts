@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import Joi from 'joi';
+import { UserModule } from '@modules/user/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -10,8 +11,7 @@ import Joi from 'joi';
         APP_PORT: Joi.number(),
       }),
     }),
+    UserModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}

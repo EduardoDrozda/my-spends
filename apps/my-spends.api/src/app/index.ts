@@ -1,4 +1,4 @@
-import { INestApplication, Logger } from '@nestjs/common';
+import { INestApplication, Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
@@ -15,6 +15,7 @@ export class Application {
 
   private async setGlobalPrefix(): Promise<void> {
     this.app.setGlobalPrefix(this.globalPrefix);
+    this.app.useGlobalPipes(new ValidationPipe());
   }
 
   private getPort(): number {
