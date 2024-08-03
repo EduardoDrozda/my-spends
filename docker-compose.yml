@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: my-spends__db
+    image: postgres:12.4
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: my-spends__db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - my-spends__network
+
+volumes:
+  db_data:
+
+networks:
+  my-spends__network:
+    driver: bridge
