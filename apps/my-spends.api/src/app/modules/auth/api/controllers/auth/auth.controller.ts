@@ -6,10 +6,12 @@ import {
   Inject,
   Post,
 } from '@nestjs/common';
-import { AUTH_SERVICE, IAuthService } from './interfaces';
+
+import { AUTH_SERVICE, IAuthService } from '@modules/auth/application/services';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { GetAuthDTO } from './dtos';
-import { CreateAuthDTO } from './dtos';
+import { GetAuthDTO } from '../../dtos';
+import { CreateAuthDTO } from '../../dtos';
+import { Public } from '@shared/decorators';
 
 @ApiTags('Login')
 @Controller('login')
@@ -19,6 +21,7 @@ export class AuthController {
   ) { }
 
   @Post()
+  @Public()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Authenticate a registrated user' })
   @ApiResponse({

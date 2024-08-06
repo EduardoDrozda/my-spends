@@ -10,6 +10,7 @@
       "@shared/*": ["apps/my-spends.api/src/app/shared/*"],
       "@modules/*": ["apps/my-spends.api/src/app/modules/*"],
       "@config/*": ["apps/my-spends.api/src/app/config/*"],
+      "@database/*": ["apps/my-spends.api/src/app/database/*"],
     },
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],

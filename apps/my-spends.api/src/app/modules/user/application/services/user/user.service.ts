@@ -1,9 +1,10 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { IUserRepository, IUserService, USER_REPOSITORY } from './interfaces';
-import { User, UserCreateInput, UserInput } from './models';
-import { HASH_SERVICE, IHashService } from '@shared/services';
+import { BadRequestException, Inject } from '@nestjs/common';
 
-@Injectable()
+import { User, UserCreateInput, UserInput } from '../../models';
+import { HASH_SERVICE, IHashService } from '@shared/services';
+import { IUserService } from './iUser.service';
+import { IUserRepository, USER_REPOSITORY } from '../../repositories/user';
+
 export class UserService implements IUserService {
   private readonly USER_ALREADY_EXISTS = 'User already exists';
 

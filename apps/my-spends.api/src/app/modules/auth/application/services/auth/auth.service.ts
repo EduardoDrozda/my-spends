@@ -1,9 +1,9 @@
-import { IUserService, USER_SERVICE } from '@modules/user';
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
-import { IAuthService } from './interfaces';
-import { CreateAuthDTO, GetAuthDTO } from './dtos';
+import { CreateAuthDTO, GetAuthDTO } from '../../../api/dtos';
 import { IJwtService, JWT_SERVICE } from '@shared/services/jwt/iJwt.service';
 import { HASH_SERVICE, IHashService } from '@shared/services';
+import { IAuthService } from './iAuth.service';
+import { IUserService, USER_SERVICE } from '@modules/user/application/services';
 
 @Injectable()
 export class AuthService implements IAuthService {

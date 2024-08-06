@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UserController } from './user.controller';
-import { USER_REPOSITORY, USER_SERVICE } from './interfaces';
-import { UserRepository } from './user.repository';
+import { UserService } from './application/services/user/user.service';
 import { HashModule } from '@shared/services';
+import { UserController } from './api/controllers/user/user.controller';
+import { USER_REPOSITORY } from './application/repositories/user';
+import { UserRepository } from './infrastructure/repositories/user';
+import { USER_SERVICE } from './application/services/user';
 
 @Module({
   imports: [HashModule],
@@ -20,4 +21,4 @@ import { HashModule } from '@shared/services';
   ],
   exports: [USER_SERVICE],
 })
-export class UserModule {}
+export class UserModule { }

@@ -1,4 +1,5 @@
-import { User, UserCreateInput } from "../models";
+import { User, UserCreateInput } from "../../models";
+
 
 export const USER_REPOSITORY = Symbol("IUserRepository");
 

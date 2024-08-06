@@ -1,6 +1,7 @@
-import { knex } from '../../database';
-import { IUserRepository } from './interfaces';
-import { UserCreateInput, User } from './models';
+import { User, UserCreateInput } from "@modules/user/application/models";
+import { IUserRepository } from "@modules/user/application/repositories";
+import { knex } from "@database/index";
+
 
 export class UserRepository implements IUserRepository {
   async create({ email, name, password }: UserCreateInput): Promise<User> {

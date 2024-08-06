@@ -1,4 +1,4 @@
-import { User, UserCreateInput, UserInput } from "../models";
+import { User, UserCreateInput, UserInput } from "../../models";
 
 export const USER_SERVICE = Symbol('USER_SERVICE');
 

@@ -3,9 +3,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule as JwtNestModule } from '@nestjs/jwt';
 import { JwtService } from './jwt.service';
 import { JWT_SERVICE } from './iJwt.service';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from '@shared/guards';
 
 @Module({
   imports: [
+    ConfigModule,
     JwtNestModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
