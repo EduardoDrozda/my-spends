@@ -3,8 +3,10 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { USER_REPOSITORY, USER_SERVICE } from './interfaces';
 import { UserRepository } from './user.repository';
+import { HashModule } from '@shared/services';
 
 @Module({
+  imports: [HashModule],
   controllers: [UserController],
   providers: [
     {
@@ -15,6 +17,7 @@ import { UserRepository } from './user.repository';
       provide: USER_SERVICE,
       useClass: UserService,
     },
-  ]
+  ],
+  exports: [USER_SERVICE],
 })
 export class UserModule {}
